@@ -1,0 +1,21 @@
+<view class="container home-container" hidden="{{!loadingHidden}}">
+    <o-swiper banner="{{bannerArray}}">
+    </o-swiper>
+    <view class="home-main">
+        <o-theme theme="{{themeArray}}">
+        </o-theme>
+        <view class="home-main-products">
+            <view class="home-main-header">
+                最近新品
+            </view>
+            <view class="products-box">
+                <block wx:for="{{productArray}}" wx:key="">
+                    <o-product product="{{item}}">
+                    </o-product>
+                </block>
+            </view>
+        </view>
+    </view>
+    <o-loading class="loading" wx:if="{{loading}}">
+    </o-loading>
+</view>

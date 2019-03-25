@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "o-category": "/components/category/index",
+        "o-loading": "/components/loading/index"
+    }
+}

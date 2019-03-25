@@ -1,0 +1,12 @@
+<scroll-view bindtap="onTap" class="products-item" data-id="{{product.id}}" scroll-y="">
+    <image class="products-image" lazy-load="true" mode="aspectFill" src="{{product.main_img_url}}">
+    </image>
+    <view class="products-item-bottom">
+        <text class="name">
+            {{product.name}}
+        </text>
+        <view class="price">
+            ￥{{product.price}}
+        </view>
+    </view>
+</scroll-view>

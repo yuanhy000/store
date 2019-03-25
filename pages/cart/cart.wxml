@@ -1,0 +1,58 @@
+<view class="container cart-container">
+    <block wx:if="{{cartArray.length > 0}}">
+        <view class="cart-box">
+            <block wx:for="{{cartArray}}" wx:key="">
+                <view class="cart-item">
+                    <view class="cart-item-main">
+                        <view class="cart-item-checkbox" bindtap="changeSelectStatus" data-id="{{item.id}}" data-status="{{item.selectedStatus}}">
+                            <image mode="scaleToFill" src="../../images/icon/circle@selected.png" wx:if="{{item.selectedStatus}}">
+                            </image>
+                            <image mode="scaleToFill" src="../../images/icon/circle@noselected.png" wx:else="">
+                            </image>
+                        </view>
+                        <view class="cart-item-img">
+                            <image class="good-image" mode="scaleToFill" src="{{item.main_img_url}}">
+                            </image>
+                        </view>
+                        <view class="cart-item-word">
+                            <view class="title-box">
+                                <text class="title">{{item.name}}</text>
+                                <text>￥{{item.price}}</text>
+                            </view>
+                            <view class="bottom-box">
+                                <view class="cart-item-counts">
+                                    <view bindtap="changeSelectCount" class="btns {{item.counts==1?'disabled':''}}" data-id="{{item.id}}" data-operator="-">-</view>
+                                    <view class="counts">{{item.counts}}</view>
+                                    <view bindtap="changeSelectCount" class="btns" data-id="{{item.id}}" data-operator="+">+</view>
+                                </view>
+                                <view class="delete" bind:tap="deleteProduct" data-id="{{item.id}}">×</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="footer-account-box all-accounts-box">
+            <view class="all-select" bindtap="changeAllSelectStatus" data-status="{{totalType == cartArray.length ? 'true' : 'false'}}">
+                <image class="title-icon" mode="scaleToFill" src="../../images/icon/all@selected.png" wx:if="{{totalType == cartArray.length}}">
+                </image>
+                <image class="title-icon" mode="scaleToFill" src="../../images/icon/all.png" wx:else="">
+                </image>
+                <text>全选{{totalCounts}}</text>
+            </view>
+            <view bindtap="placeOrder" class="all-price-submit {{totalPrice == 0 ? 'disabled' : ''}}">
+                <view class="accounts-btn">下单 </view>
+                <view class="price-text">￥{{totalPrice}}</view>
+                <view class="arrow-icon">
+                    <image mode="scaleToFill" src="../../images/icon/arrow@grey.png" wx:if="{{totalPrice == 0}}">
+                    </image>
+                    <image mode="scaleToFill" src="../../images/icon/arrow.png" wx:else="">
+                    </image>
+                </view>
+            </view>
+        </view>
+    </block>
+    <view class="no-data" wx:else="">
+        你没有添加任何商品，快去选购吧
+    </view>
+</view>

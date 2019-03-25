@@ -1,0 +1,8 @@
+<swiper autoplay="true" class="swiper" indicator-dots="true">
+    <block wx:for="{{banner}}" wx:key="">
+        <swiper-item bindtap="onTap" class="banner-item" data-id="{{item.key_word}}">
+            <image mode="scaleToFill" src="{{item.img.url}}">
+            </image>
+        </swiper-item>
+    </block>
+</swiper> 

@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "o-swiper": "/components/swiper/index",
+        "o-theme": "/components/theme/index",
+        "o-product": "/components/product/index",
+        "o-loading": "/components/loading/index"
+    }
+}

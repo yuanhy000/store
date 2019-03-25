@@ -1,0 +1,16 @@
+<view class="category-detail-box" hidden="{{!categoryData}}">
+    <view class="category-header">
+        <image src="{{categoryData.topImgUrl}}" mode="aspectFill"></image>
+    </view>
+    <view class="category-title">
+        <text>{{categoryData.title}}</text>
+    </view>
+    <view class="category-main">
+        <block wx:for="{{categoryData.products}}" wx:key="">
+            <view class="category-goods-items {{index%3==1?'middle':''}}" data-id="{{item.id}}" bindtap="onProductTap">
+                <image src="{{item.main_img_url}}" mode="aspectFill"></image>
+                <view>{{item.name}}</view>
+            </view>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,17 @@
+<view class="home-main-theme">
+    <view class="home-main-header">
+        精选主题
+    </view>
+    <view class="theme-box">
+        <block wx:for="{{theme}}" wx:key="">
+            <view bindtap="onTap" class="theme-item big" data-id="{{item.id}}" data-name="{{item.name}}" wx:if="{{index==2}}">
+                <image class="" mode="scaleToFill" src="{{item.topic_img.url}}">
+                </image>
+            </view>
+            <view bindtap="onTap" class="theme-item" data-id="{{item.id}}" data-name="{{item.name}}" wx:else="">
+                <image class="" mode="scaleToFill" src="{{item.topic_img.url}}">
+                </image>
+            </view>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,17 @@
+<view class="container category-container">
+    <view class="category-box">
+        <view class="left-box">
+            <block wx:for="{{categoryArray}}" wx:key="">
+                <view bindtap="changeCategory" class="menu-item {{selectedIndex == index ? 'selected' : ''}}" data-id="{{item.id}}" data-index="{{index}}" data-title-name="{{item.name}}">
+                    {{item.name}}
+                </view>
+            </block>
+        </view> 
+        <view class="right-box">
+            <o-loading class="loading" wx:if="{{loading}}">
+            </o-loading>
+            <o-category class="translate1" categoryData="{{productOfCategory}}" wx:else>
+            </o-category>
+        </view>
+    </view>
+</view>

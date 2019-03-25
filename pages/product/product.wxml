@@ -1,0 +1,66 @@
+<view class="containewr detail-container" wx:if="{{!loading}}">
+    <view class="detail-header-box">
+        <view class="fixed-btns-box">
+            <view class="fiexd-cart" bindtap="changeToCart">
+                <image class="" mode="scaleToFill" src="../../images/icon/cart@top.png">
+                </image>
+                <view wx:if="{{cartTotalCount>0}}">{{cartTotalCount}}</view>
+            </view>
+        </view>
+        <view class="detail-topic-img">
+            <image class="" src="{{productArray.main_img_url}}" mode="aspectFit">
+            </image>
+        </view>
+        <view class="cart-box">
+            <view class="product-counts">
+                <picker class="{{productArray.stock == 0 ? 'disabled' : ''}}" mode="selector" range="{{countArray}}" bindchange="getSelectCount">
+                    <view>
+                        <text class="counts-tips">数量</text>
+                        <text class="counts-data">{{selectCount}}</text>
+                        <image class="counts-icon" src="../../images/icon/arrow@down.png" mode="scaleToFill"></image>
+                    </view>
+                </picker>
+            </view>
+            <view class="middle-border"></view>
+            <view class="add-cart-btn {{productArray.stock == 0 ? 'disabled' : ''}}" hover-class="add-cart-btn-active" bindtap="addCart">
+                <text>加入购物车</text>
+                <image class="cart-icon" src="../../images/icon/cart.png"></image>
+            </view>
+        </view>
+        <view class="basic-info-box">
+            <view class="stock" wx:if="{{productArray.stock > 0}}">有货</view>
+            <view class="stock no" wx:else>缺货</view>
+            <view class="name">{{productArray.name}}</view>
+            <view class="price">￥{{productArray.price}}</view>
+        </view>
+    </view>
+    <view class="detail-bottom-box">
+        <view class="tabs-box">
+            <block wx:for="{{tabs}}" wx:key="">
+                <view class="tabs-item {{bindTabsIndex == index ? 'selected' : ''}}" bindtap="bindTabsTap" data-index="{{index}}">
+                    {{item}}
+                </view>
+            </block>
+        </view>
+        <view class="product-detail-box">
+            <view class="product-detail-imgs" hidden="{{bindTabsIndex != 0}}">
+                <block wx:for="{{productArray.images}}" wx:key="">
+                    <image class="" src="{{item.img_url.url}}" mode="aspectFit"></image>
+                </block>
+            </view>
+            <view class="product-detail-properties" hidden="{{bindTabsIndex != 1}}">
+                <block wx:for="{{productArray.properties}}" wx:key="">
+                    <view class="properties-item">
+                        <view class="properties-name">{{item.name}}</view>
+                        <view class="properties-detail">{{item.detail}}</view>
+                    </view>
+                </block>
+            </view>
+            <view class="product-detail-protect" hidden="{{bindTabsIndex != 2}}">
+                <view>七天无理由退货</view>
+            </view>
+        </view>
+    </view>
+</view>
+<o-loading class="loading" wx:if="{{loading}}">
+</o-loading>
